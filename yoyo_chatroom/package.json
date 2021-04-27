@@ -1,0 +1,23 @@
+{
+  "name": "static-files",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-server": "npx nodemon index.js",
+    "watch": "watchify static/main.js -o bundle.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "browserify": "^17.0.0",
+    "http-hash-router": "^2.0.1",
+    "st": "^2.0.0",
+    "watchify": "^4.0.0",
+    "yo-yo": "^1.4.1"
+  }
+}

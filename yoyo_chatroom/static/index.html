@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yo-yo Chatroom</title>
+  </head>
+  <body>
+    <h1>Yo-yo Chatroom</h1>
+    <div id="input-div">
+      <input type="text" placeholder="Add new message..." id="input-bar" />
+      <button type="button" id="input-btn">Submit</button>
+      <label for="rooms">Choose a Room</label>
+      <select name="rooms" id="rooms"></select>
+
+      <input type="text" placeholder="Create a new room..." id="new-room" />
+      <button type="submit" id="new-room-btn">Make a new room</button>
+    </div>
+    <div id="filters-div">
+      <label for="filters">Choose a room to view posts</label>
+      <select name="filters" id="filters"></select>
+      <button id="filter-btn" type="submit">Filter By Room</button>
+    </div>
+    <div id="messages-div"></div>
+    <script type="text/javascript" src="../bundle.js"></script>
+  </body>
+</html>
