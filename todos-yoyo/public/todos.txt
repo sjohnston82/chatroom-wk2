@@ -1,0 +1,3 @@
+{ text: "take out the trash", completed: true },
+{ text: "do the dishes", completed: false },
+{ text: "learn express", completed: false },

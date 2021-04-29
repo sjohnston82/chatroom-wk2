@@ -27,6 +27,52 @@ router.set("/messages", function (req, res) {
   }
 });
 
+router.set("/rooms", function (req, res) {
+  if (req.method === "GET") {
+    getRooms(req, res);
+  } else if (req.method === "POST") {
+    postRooms(req, res);
+  } else {
+    res.statusCode = 400;
+    res.end("unsupported operation");
+  }
+});
+
+// function postRooms(req, res){
+//   let data = '';
+//   req.on('data', function(chunk) {
+//     data += chunk
+//   })
+
+// ​  req.on('end', function() {
+//     const message = JSON.parse(data);
+//     fs.appendFile("./rooms.txt", message.room + '\n', function (err) {
+//       if (err) {
+//         console.error(err);
+//       }
+//     });
+//     res.statusCode = 200;
+//     res.end("Room posted successfully");
+//   }
+// )};
+
+function postRooms(req, res) {
+  let data = "";
+  req.on("data", function (chunk) {
+    data += chunk;
+  });
+  req.on("end", function () {
+    const message = JSON.parse(data);
+    fs.appendFile("./rooms.txt", message.room + "\n", function (err) {
+      if (err) {
+        console.error(err);
+      }
+    });
+    res.statusCode = 200;
+    res.end("Room posted successfully");
+  });
+}
+
 // this is the POST handler for /messages
 // this function should write a new message to the file
 function postMessage(req, res) {
@@ -81,6 +127,16 @@ function getMessages(req, res) {
 
   // here we set the response code to 200 (success), and the content type to json
   // then we send up the response by stringifying the messages array
+}
+
+function getRooms(req, res) {
+  let roomNames = "";
+  fs.readFile("./rooms.txt", "utf8", function (err, data) {
+    if (err) throw err;
+    roomNames = data;
+    // res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(roomNames));
+  });
 }
 
 const server = http.createServer((req, res) => {

@@ -1,5 +1,4 @@
 const yo = require("yo-yo");
-
 const inputBar = document.getElementById("input-bar");
 const inputBtn = document.getElementById("input-btn");
 const rooms = document.getElementById("rooms");
@@ -7,9 +6,17 @@ const filters = document.getElementById("filters");
 const filterBtn = document.getElementById("filter-btn");
 const newRoomInput = document.getElementById("new-room");
 const newRoomBtn = document.getElementById("new-room-btn");
-
 const username = prompt("Enter your username");
-const roomNames = ["General", "Sports", "Comedy"];
+// const roomNames = ["General", "Sports", "Comedy"];
+
+const roomsInTxt = [];
+console.log(roomsInTxt);
+
+// for (let i = 0; i < roomsInTxt.length; i++) {
+//   if(roomsInTxt.indexOf(roomsInTxt[i]) == -1) {
+
+//   }
+// }
 
 const addNewRoom = () => {
   const newRoom = newRoomInput.value;
@@ -18,21 +25,22 @@ const addNewRoom = () => {
   rooms.appendChild(test);
   filters.append(test1);
   newRoomInput.value = "";
+  postRooms(newRoom);
 };
 
-appendRoom();
-
 function appendRoom() {
-  roomNames.forEach((room) => {
+  getRooms();
+  roomsInTxt.forEach((room) => {
     let test1 = yo`<option value="${room}">${room}</option>`;
     let test = yo`<option value="${room}">${room}</option>`;
     filters.append(test1);
     rooms.appendChild(test);
   });
 }
+getRooms();
+appendRoom();
 
 newRoomBtn.addEventListener("click", addNewRoom);
-
 const getRoom = (messages) => {
   const currRoom = filters.value;
   yo.update(el, messageList(messages, currRoom));
@@ -58,8 +66,10 @@ const submitHandler = (event) => {
 function interval() {
   setInterval(() => {
     getMessages();
+    getRooms();
   }, 2000);
 }
+
 filterBtn.addEventListener("click", filterHandler);
 inputBtn.addEventListener("click", submitHandler);
 
@@ -81,6 +91,7 @@ const currRoom = filters.value;
 const messagesDiv = document.getElementById("messages-div");
 const messages = [];
 var el = messageList(messages, update, currRoom);
+
 function messageList(messages) {
   return yo`<ul>
   ${messages.map((message) => {
@@ -92,10 +103,10 @@ function messageList(messages) {
 function update() {
   messages.push(message);
   const currRoom = filters.value;
-
   let newList = messageList(messages, update);
   yo.update(el, newList);
 }
+
 messagesDiv.appendChild(el);
 
 function postMessage(username, text, room) {
@@ -130,8 +141,40 @@ function getMessages() {
     .then((response) => response.json())
     .then((data) => {
       getRoom(data.filter((message) => message.room === currRoom));
-      console.log(filters.value);
+      console.log(data);
+    });
+}
+function getRooms() {
+  fetch("http://localhost:8000/rooms", {
+    method: "GET",
+    headers: { "Access-Control-Allow-Origin": "*" },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      let splitData = data.split("\n");
+      roomsInTxt.push(splitData);
     });
 }
 
+function postRooms(room) {
+  console.log("posting message");
+  fetch("http://localhost:8000/rooms", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+    body: JSON.stringify({
+      room: room,
+    }),
+  })
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+
+getRooms();
 getMessages();
