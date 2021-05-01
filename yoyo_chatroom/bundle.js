@@ -1,4 +1,6 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+
+},{}],2:[function(require,module,exports){
 var document = require('global/document')
 var hyperx = require('hyperx')
 var onload = require('on-load')
@@ -153,9 +155,7 @@ module.exports = hyperx(belCreateElement, {comments: true})
 module.exports.default = module.exports
 module.exports.createElement = belCreateElement
 
-},{"global/document":3,"hyperx":6,"on-load":9}],2:[function(require,module,exports){
-
-},{}],3:[function(require,module,exports){
+},{"global/document":3,"hyperx":6,"on-load":9}],3:[function(require,module,exports){
 (function (global){(function (){
 var topLevel = typeof global !== 'undefined' ? global :
     typeof window !== 'undefined' ? window : {}
@@ -176,7 +176,7 @@ if (typeof document !== 'undefined') {
 module.exports = doccy;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"min-document":2}],4:[function(require,module,exports){
+},{"min-document":1}],4:[function(require,module,exports){
 (function (global){(function (){
 var win;
 
@@ -1442,7 +1442,7 @@ module.exports.update = function (fromNode, toNode, opts) {
   }
 }
 
-},{"./update-events.js":11,"bel":1,"morphdom":7}],11:[function(require,module,exports){
+},{"./update-events.js":11,"bel":2,"morphdom":7}],11:[function(require,module,exports){
 module.exports = [
   // attribute events (can be set with attributes)
   'onclick',
@@ -1490,16 +1490,9 @@ const filterBtn = document.getElementById("filter-btn");
 const newRoomInput = document.getElementById("new-room");
 const newRoomBtn = document.getElementById("new-room-btn");
 const username = prompt("Enter your username");
-// const roomNames = ["General", "Sports", "Comedy"];
+// const roomNames = ["General", "Sports", "Comedy"];\
 
-const roomsInTxt = [];
-console.log(roomsInTxt);
-
-// for (let i = 0; i < roomsInTxt.length; i++) {
-//   if(roomsInTxt.indexOf(roomsInTxt[i]) == -1) {
-
-//   }
-// }
+// window.onload = interval;
 
 const addNewRoom = () => {
   const newRoom = newRoomInput.value;
@@ -1511,18 +1504,23 @@ const addNewRoom = () => {
   postRooms(newRoom);
 };
 
+const roomsInTxt = [];
 function appendRoom() {
-  getRooms();
+  let listItems = roomsInTxt.map((r) => r);
+  console.log(listItems);
+  // getRooms();
+  // console.log(roomsInTxt);
   roomsInTxt.forEach((room) => {
-    let test1 = yo`<option value="${room}">${room}</option>`;
-    let test = yo`<option value="${room}">${room}</option>`;
-    filters.append(test1);
-    rooms.appendChild(test);
+    if (!listItems.includes(room)) {
+      let filterList = yo`<option value="${room}">${room}</option>`;
+      let postList = yo`<option value="${room}">${room}</option>`;
+      filters.append(filterList);
+      rooms.appendChild(postList);
+    }
   });
 }
 getRooms();
-appendRoom();
-
+// appendRoom();
 newRoomBtn.addEventListener("click", addNewRoom);
 const getRoom = (messages) => {
   const currRoom = filters.value;
@@ -1541,7 +1539,7 @@ const submitHandler = (event) => {
   const text = inputBar.value;
   postMessage(username, text, room);
   inputBar.value = "";
-  interval();
+
   let newList = messageList(messages, update, currRoom);
   yo.update(el, newList);
 };
@@ -1549,8 +1547,7 @@ const submitHandler = (event) => {
 function interval() {
   setInterval(() => {
     getMessages();
-    getRooms();
-  }, 2000);
+  }, 3000);
 }
 
 filterBtn.addEventListener("click", filterHandler);
@@ -1624,7 +1621,7 @@ function getMessages() {
     .then((response) => response.json())
     .then((data) => {
       getRoom(data.filter((message) => message.room === currRoom));
-      console.log(data);
+      // console.log(data);
     });
 }
 function getRooms() {
@@ -1634,8 +1631,17 @@ function getRooms() {
   })
     .then((response) => response.json())
     .then((data) => {
-      let splitData = data.split("\n");
-      roomsInTxt.push(splitData);
+      let parsedData = data
+        .replace(/\r/g, "")
+        .split("\n")
+        .filter((room) => room)
+        .forEach((room) => {
+          if (!roomsInTxt.includes(room)) {
+            roomsInTxt.push(room);
+          }
+        });
+      appendRoom();
+      // roomsInTxt.push(newRooms);
     });
 }
 
@@ -1653,13 +1659,13 @@ function postRooms(room) {
   })
     .then((data) => {
       console.log("Success:", data);
+      getRooms();
     })
     .catch((error) => {
       console.error("Error:", error);
     });
 }
 
-getRooms();
 getMessages();
 
 },{"yo-yo":10}]},{},[12]);

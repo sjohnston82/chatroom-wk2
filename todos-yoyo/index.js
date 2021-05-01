@@ -19,14 +19,20 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use(bodyParser.json());
 
 app.get("/", function (req, res) {
+  res.render("index");
+});
+
+app.get("/todo", function (req, res) {
   fs.readFile(file, "utf8", function (err, data) {
     if (err) {
       console.error(err);
+      return;
     }
     console.log(data);
-    res.send(JSON.stringify(data));
+    let splitData = data.split("\n");
+    splitData.filter((data) => data);
+    res.send(JSON.stringify(splitData));
   });
-  res.render("index");
 });
 
 app.listen(port, () => console.log("listening on" + port));

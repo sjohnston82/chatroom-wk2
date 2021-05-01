@@ -7,16 +7,9 @@ const filterBtn = document.getElementById("filter-btn");
 const newRoomInput = document.getElementById("new-room");
 const newRoomBtn = document.getElementById("new-room-btn");
 const username = prompt("Enter your username");
-// const roomNames = ["General", "Sports", "Comedy"];
+// const roomNames = ["General", "Sports", "Comedy"];\
 
-const roomsInTxt = [];
-console.log(roomsInTxt);
-
-// for (let i = 0; i < roomsInTxt.length; i++) {
-//   if(roomsInTxt.indexOf(roomsInTxt[i]) == -1) {
-
-//   }
-// }
+// window.onload = interval;
 
 const addNewRoom = () => {
   const newRoom = newRoomInput.value;
@@ -28,18 +21,23 @@ const addNewRoom = () => {
   postRooms(newRoom);
 };
 
+const roomsInTxt = [];
 function appendRoom() {
-  getRooms();
+  let listItems = roomsInTxt.map((r) => r);
+  console.log(listItems);
+  // getRooms();
+  // console.log(roomsInTxt);
   roomsInTxt.forEach((room) => {
-    let test1 = yo`<option value="${room}">${room}</option>`;
-    let test = yo`<option value="${room}">${room}</option>`;
-    filters.append(test1);
-    rooms.appendChild(test);
+    if (!listItems.includes(room)) {
+      let filterList = yo`<option value="${room}">${room}</option>`;
+      let postList = yo`<option value="${room}">${room}</option>`;
+      filters.append(filterList);
+      rooms.appendChild(postList);
+    }
   });
 }
 getRooms();
-appendRoom();
-
+// appendRoom();
 newRoomBtn.addEventListener("click", addNewRoom);
 const getRoom = (messages) => {
   const currRoom = filters.value;
@@ -58,7 +56,7 @@ const submitHandler = (event) => {
   const text = inputBar.value;
   postMessage(username, text, room);
   inputBar.value = "";
-  interval();
+
   let newList = messageList(messages, update, currRoom);
   yo.update(el, newList);
 };
@@ -66,8 +64,7 @@ const submitHandler = (event) => {
 function interval() {
   setInterval(() => {
     getMessages();
-    getRooms();
-  }, 2000);
+  }, 3000);
 }
 
 filterBtn.addEventListener("click", filterHandler);
@@ -141,7 +138,7 @@ function getMessages() {
     .then((response) => response.json())
     .then((data) => {
       getRoom(data.filter((message) => message.room === currRoom));
-      console.log(data);
+      // console.log(data);
     });
 }
 function getRooms() {
@@ -151,8 +148,17 @@ function getRooms() {
   })
     .then((response) => response.json())
     .then((data) => {
-      let splitData = data.split("\n");
-      roomsInTxt.push(splitData);
+      let parsedData = data
+        .replace(/\r/g, "")
+        .split("\n")
+        .filter((room) => room)
+        .forEach((room) => {
+          if (!roomsInTxt.includes(room)) {
+            roomsInTxt.push(room);
+          }
+        });
+      appendRoom();
+      // roomsInTxt.push(newRooms);
     });
 }
 
@@ -170,11 +176,11 @@ function postRooms(room) {
   })
     .then((data) => {
       console.log("Success:", data);
+      getRooms();
     })
     .catch((error) => {
       console.error("Error:", error);
     });
 }
 
-getRooms();
 getMessages();
