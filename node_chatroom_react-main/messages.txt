@@ -1,0 +1,16 @@
+
+{"text":"testing","room":"general","date":"2021-05-08T08:52:03.438Z","nick":"asd","thumbnail":"https://randomuser.me/api/portraits/thumb/women/57.jpg"}
+{"text":"hiiiiiii","room":"general","date":"2021-05-08T08:52:33.540Z","nick":"paul","thumbnail":"https://randomuser.me/api/portraits/thumb/men/83.jpg"}
+{"text":"howdy","room":"general","date":"2021-05-08T08:57:24.507Z","nick":"as","thumbnail":"https://randomuser.me/api/portraits/thumb/men/1.jpg"}
+{"text":"howdy","room":"general","date":"2021-05-08T08:57:24.507Z","nick":"as","thumbnail":"https://randomuser.me/api/portraits/thumb/men/1.jpg"}
+{"text":"\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"","room":"general","date":"2021-05-08T17:55:53.012Z","nick":"as","thumbnail":"https://randomuser.me/api/portraits/thumb/men/97.jpg"}
+{"text":"howdy","room":"general","date":"2021-05-08T21:58:37.046Z","nick":"steve","thumbnail":"https://randomuser.me/api/portraits/thumb/women/40.jpg"}
+{"text":"hi im ass","room":"general","date":"2021-05-08T22:11:15.253Z","nick":"ass","thumbnail":"https://randomuser.me/api/portraits/thumb/women/72.jpg"}
+{"text":"tesht","room":"general","date":"2021-05-08T22:45:17.871Z","nick":"sd","thumbnail":"https://randomuser.me/api/portraits/thumb/women/54.jpg"}
+{"text":"yo","room":"general","date":"2021-05-09T00:17:01.221Z","nick":"a","thumbnail":"https://randomuser.me/api/portraits/thumb/men/75.jpg"}
+{"text":"yo","room":"general","date":"2021-05-09T00:17:01.221Z","nick":"a","thumbnail":"https://randomuser.me/api/portraits/thumb/men/75.jpg"}
+{"text":"aa","room":"general","date":"2021-05-09T02:40:56.981Z","nick":"a","thumbnail":"https://randomuser.me/api/portraits/thumb/men/79.jpg"}
+{"text":"testing","room":"general","date":"2021-05-09T02:45:40.033Z","nick":"saa","thumbnail":"https://randomuser.me/api/portraits/thumb/women/19.jpg"}
+{"text":"howdy","room":"general","date":"2021-05-09T03:50:15.293Z","nick":"a","thumbnail":"https://randomuser.me/api/portraits/thumb/women/21.jpg"}
+{"text":"howdy","room":"general","date":"2021-05-09T03:58:34.398Z","nick":"ass","thumbnail":"https://randomuser.me/api/portraits/thumb/men/75.jpg"}
+{"text":"hi","room":"general","date":"2021-05-09T04:52:54.416Z","nick":"hi","thumbnail":"https://randomuser.me/api/portraits/thumb/women/40.jpg"}

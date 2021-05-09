@@ -1,0 +1,27 @@
+.new-msg-div {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-color: lightsteelblue;
+  z-index: 999;
+  height: 45px;
+  margin-bottom: auto;
+  border-top: 1px solid black;
+}
+
+#submit-icon {
+  color: blue;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin: 5px 10px;
+  border: 0;
+  border-bottom: 2px solid #000;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.2);
+  width: 350px;
+}
+
+input[type="text"]::placeholder {
+  text-align: center;
+}

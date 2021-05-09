@@ -1,0 +1,86 @@
+.message-item {
+  padding: 10px;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  /* border-radius: 5px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 570px;
+  align-self: center;
+}
+.message-item .nick {
+  margin: 5px;
+  padding: 3px;
+  /* border: 1px solid black; */
+  /* border-radius: 5px; */
+  /* background-color: blue; */
+  color: black;
+  font-weight: bold;
+  font-size: 1.3em;
+  /* display: flex;
+  flex-direction: column; */
+}
+.message-item .text {
+  background-color: ivory;
+  margin-top: 15px;
+  display: flex;
+  justify-content: left;
+  padding: 8px;
+  border-radius: 10px 10px 10px 10px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: x-large;
+}
+
+.message-item .thumbnail {
+  border-radius: 50%;
+  max-width: 40px;
+  max-height: 40px;
+  margin-right: 15px;
+}
+
+.message-item .left-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-item .date {
+  font-size: 10px;
+  margin-top: 15px;
+  /* float: right; */
+  justify-content: flex-end;
+}
+
+.message-item-you {
+  padding: 10px;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  /* border-radius: 5px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 570px;
+  align-self: center;
+}
+
+.message-item-you .date {
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.message-item-you .text {
+  background-color: #147efb;
+  margin-right: 10px;
+  display: flex;
+  justify-content: left;
+  padding: 8px;
+  border-radius: 10px 10px 10px 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: x-large;
+}

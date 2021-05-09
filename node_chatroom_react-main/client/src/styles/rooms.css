@@ -1,0 +1,39 @@
+.addRoomButton {
+  margin-right: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+
+  padding: 10px;
+  border: none;
+  background-color: #3f51b5;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+  max-height: 40px;
+  /* width: 50px; */
+}
+
+select {
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  max-height: 40px;
+  font-family: "Roboto", sans-serif;
+}
+
+select::placeholder {
+  text-align: center;
+}
+
+#rooms {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* background-color: yellow; */
+}
+
+p {
+  padding: 5px;
+  margin-top: 0px;
+  font-size: 20px;
+}

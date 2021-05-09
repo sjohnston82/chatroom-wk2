@@ -1,0 +1,19 @@
+.message-container {
+  display: flex;
+  flex-direction: column;
+  /* padding: 0 30px; */
+  min-width: 580px;
+  max-width: 580px;
+  /* max-height: 880px; */
+  /* height: 95vh; */
+  /* background: #fff; */
+  border-radius: 20px;
+  justify-content: center;
+  border: 1px solid gray;
+  margin-left: auto;
+  margin-right: auto;
+  flex-grow: 1;
+  padding: 15px;
+  background-color: whitesmoke;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.2);
+}
