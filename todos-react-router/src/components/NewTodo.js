@@ -5,19 +5,21 @@ const NewTodo = (props) => {
     task: "",
     completed: false,
     id: "",
+    completedOn: null,
   });
 
   const handleChange = (evt) => {
     const value = evt.target.value;
-    let newId = "_" + Math.random().toString(36).substr(2, 9);
+    let newId = props.todos.length + 1;
     console.log(newId);
-    setNewTodo({ task: value, completed: false, id: newId });
+    setNewTodo({ task: value, completed: false, id: newId, completedOn: null });
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     // console.log(newTodo);
-    props.setTodos([...props.todos, newTodo]);
+    props.postTodos(newTodo.task, newTodo.completed, newTodo.id);
+    setNewTodo({ task: "" });
   };
   return (
     <div>

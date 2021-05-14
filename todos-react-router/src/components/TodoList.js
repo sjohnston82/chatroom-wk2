@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Todo from "./Todo";
-import "../TodoList.css";
+import "../styles/TodoList.css";
 
 const TodoList = (props) => {
   function All() {
@@ -9,13 +9,16 @@ const TodoList = (props) => {
     return props.todos.map((todo) => {
       // console.log(todo);
       return (
-        <Todo
-          key={todo.id}
-          todos={props.todos}
-          todo={todo}
-          setTodos={props.setTodos}
-          handleToggle={props.handleToggle}
-        />
+        <>
+          <Todo
+            key={todo.id}
+            todos={props.todos}
+            todo={todo}
+            setTodos={props.setTodos}
+            handleToggle={props.handleToggle}
+            handleRemove={props.handleRemove}
+          />
+        </>
       );
     });
   }
@@ -31,6 +34,7 @@ const TodoList = (props) => {
             todo={todo}
             setTodos={props.setTodos}
             handleToggle={props.handleToggle}
+            handleRemove={props.handleRemove}
           />
         );
       });
@@ -40,24 +44,39 @@ const TodoList = (props) => {
     return props.todos
       .filter((todo) => todo.completed)
       .map((todo) => {
+        console.log(todo.completedOn);
         return (
-          <Todo
-            key={todo.id}
-            todos={props.todos}
-            todo={todo}
-            setTodos={props.setTodos}
-            handleToggle={props.handleToggle}
-          />
+          <>
+            <Todo
+              key={todo.id}
+              todos={props.todos}
+              todo={todo}
+              setTodos={props.setTodos}
+              handleToggle={props.handleToggle}
+              handleRemove={props.handleRemove}
+            />
+          </>
         );
       });
   }
+
+  useEffect(() => {
+    All();
+  });
+
   return (
-    <div >
+    <div>
       <Router>
         <div id="links">
-          <Link id="link1" to="/">All</Link> 
-          <Link id="link1" to="/incomplete">Incomplete</Link>
-          <Link id="link1" to="/completed">Completed</Link>
+          <Link id="link1" to="/">
+            All
+          </Link>
+          <Link id="link1" to="/incomplete">
+            Incomplete
+          </Link>
+          <Link id="link1" to="/completed">
+            Completed
+          </Link>
         </div>
 
         <Switch>
