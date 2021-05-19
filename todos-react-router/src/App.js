@@ -46,6 +46,16 @@ function App() {
       });
   }
 
+  const deleteTodo = (id) => {
+    console.log("deleting:", id);
+    fetch("http://localhost:8000", {
+      method: "DELETE",
+      // headers: {
+      //   "Content-type": "application/json; charset=UTF-8", // Indicates the content
+      // },
+    }).then((response) => response.json());
+  };
+
   const handleRemove = (id) => {
     setTodos([{ todos: todos.filter((todo) => todo.id !== id) }]);
   };
@@ -55,7 +65,7 @@ function App() {
   }, []);
   const handleToggle = (id) => {
     let toggled = todos.map((todo) => {
-      return todo.id === Number(id)
+      return todo.id === id
         ? {
             ...todo,
             completed: !todo.completed,
@@ -76,6 +86,7 @@ function App() {
         setTodos={setTodos}
         handleToggle={handleToggle}
         handleRemove={handleRemove}
+        deleteTodo={deleteTodo}
       />
     </div>
   );

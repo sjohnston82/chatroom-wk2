@@ -14,3 +14,7 @@
 {"text":"howdy","room":"general","date":"2021-05-09T03:50:15.293Z","nick":"a","thumbnail":"https://randomuser.me/api/portraits/thumb/women/21.jpg"}
 {"text":"howdy","room":"general","date":"2021-05-09T03:58:34.398Z","nick":"ass","thumbnail":"https://randomuser.me/api/portraits/thumb/men/75.jpg"}
 {"text":"hi","room":"general","date":"2021-05-09T04:52:54.416Z","nick":"hi","thumbnail":"https://randomuser.me/api/portraits/thumb/women/40.jpg"}
+
+{"text":"Wow sports","room":"Sports","date":"2021-05-11T00:55:26.948Z","nick":"steve","thumbnail":"https://randomuser.me/api/portraits/thumb/women/25.jpg"}
+{"text":"adding more for the sake of pagination","room":"general","date":"2021-05-11T00:55:26.948Z","nick":"steve","thumbnail":"https://randomuser.me/api/portraits/thumb/women/25.jpg"}
+{"text":"testerooni","room":"general","date":"2021-05-11T06:39:48.413Z","nick":"a","thumbnail":"https://randomuser.me/api/portraits/thumb/women/19.jpg"}

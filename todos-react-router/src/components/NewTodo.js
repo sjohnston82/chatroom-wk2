@@ -10,7 +10,7 @@ const NewTodo = (props) => {
 
   const handleChange = (evt) => {
     const value = evt.target.value;
-    let newId = props.todos.length + 1;
+    let newId = "_" + Math.random().toString(36).substr(2, 9);
     console.log(newId);
     setNewTodo({ task: value, completed: false, id: newId, completedOn: null });
   };

@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
   fs.readFile(TODOS_PATH, "utf8", (err, text) => {
     if (err) {
       return res.status(500).end("Error obtaining todos");
-    }  
+    }
 
     const todos = text
       .split("\n")
@@ -37,6 +37,12 @@ app.post("/", (req, res) => {
 
     res.end("Message posted successfully");
   });
+});
+
+app.delete("/", (req, res, id) => {
+  const deleted = req.body.id === id;
+  console.log(deleted);
+  res.status(200).end("deleted successfully");
 });
 
 app.listen(PORT, () => {

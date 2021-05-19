@@ -3,7 +3,7 @@ import "../styles/Todo.css";
 import CompletedOn from "./CompletedOn";
 
 const Todo = (props) => {
-  // console.log(props.todo);
+  console.log(props);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -11,11 +11,11 @@ const Todo = (props) => {
     props.handleToggle(props.todo.id);
   };
 
-  // const handleDelete = (e) => {
-  //   e.preventDefault();
-  //   console.log(props.todo.id);
-  //   props.handleRemove(props.todo.id);
-  // };
+  const handleDelete = (e) => {
+    e.preventDefault();
+    console.log(props.todo.id);
+    props.deleteTodo(props.todo.id);
+  };
   // console.log(props.todo.completedOn);
   return (
     <div key={props.todo.id}>
@@ -33,7 +33,7 @@ const Todo = (props) => {
         />
         // <p>Completed on {props.todo.completedOn.currentTime}</p>
       )}
-      {/* <button onClick={handleDelete}>X</button> */}
+      <button onClick={handleDelete}>X</button>
     </div>
   );
 };

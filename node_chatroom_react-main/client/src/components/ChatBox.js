@@ -23,6 +23,10 @@ const ChatBox = (props) => {
           setRooms={props.setRooms}
           currentRoom={currentRoom}
           setCurrentRoom={setCurrentRoom}
+          getMessages={props.getMessages}
+          numMessages={props.numMessages}
+          page={props.page}
+          setPage={props.setPage}
         />
       </div>
       {currentRoom ? (
@@ -37,11 +41,33 @@ const ChatBox = (props) => {
                 thumbnail={props.thumbnail}
                 username={props.username}
               />
-              
             ))}
         </ul>
       ) : (
         <div>Select A Room To Begin Your Chat Experience!</div>
+      )}
+      {currentRoom === "" ? (
+        <div></div>
+      ) : (
+        <div>
+          <button
+            onClick={() => {
+              props.setPage(props.page - 1);
+              props.getMessages(currentRoom, props.page, props.numMessages);
+            }}
+            disabled={props.page === 1 ? true : false}
+          >
+            Left
+          </button>
+          <button
+            onClick={() => {
+              props.setPage(props.page + 1);
+              props.getMessages(currentRoom, props.page, props.numMessages);
+            }}
+          >
+            Right
+          </button>
+        </div>
       )}
     </div>
   );

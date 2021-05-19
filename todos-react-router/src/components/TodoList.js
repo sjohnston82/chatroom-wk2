@@ -12,6 +12,7 @@ const TodoList = (props) => {
         <>
           <Todo
             key={todo.id}
+            deleteTodo={props.deleteTodo}
             todos={props.todos}
             todo={todo}
             setTodos={props.setTodos}
@@ -35,6 +36,7 @@ const TodoList = (props) => {
             setTodos={props.setTodos}
             handleToggle={props.handleToggle}
             handleRemove={props.handleRemove}
+            deleteTodo={props.deleteTodo}
           />
         );
       });
@@ -54,6 +56,7 @@ const TodoList = (props) => {
               setTodos={props.setTodos}
               handleToggle={props.handleToggle}
               handleRemove={props.handleRemove}
+              deleteTodo={props.deleteTodo}
             />
           </>
         );
